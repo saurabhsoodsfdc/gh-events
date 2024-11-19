@@ -11,17 +11,35 @@ on:
       - 'dev-*' # all branches which started with dev-new dev-this-is-new
       - 'feat/**'
 jobs:
+<<<<<<< HEAD
+  build:
+=======
+  test:
+>>>>>>> afc99ff (additional changes)
+    runs-on: ubuntu-latest
+    outputs:
+      script-file: ${{steps.publish.outputs.script-file}}
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+<<<<<<< HEAD
+=======
+      - name: Lint code
+        run: npm run lint
+      - name: Test code
+        run: npm run test
   build:
     runs-on: ubuntu-latest
     outputs:
       script-file: ${{steps.publish.outputs.script-file}}
     steps:
-      - name: Output event data
-        run: echo "${{ toJSON(github.event) }}"
       - name: Get code
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm ci
+>>>>>>> afc99ff (additional changes)
       - name: Build website
         run: npm run build
       - name: Publish JS filename
